@@ -25,6 +25,8 @@
           <button>Close</button>
           |
           <button v-on:click="updateMovie(currentMovie)">Update</button>
+          |
+          <button v-on:click="deleteMovie(currentMovie)">Delete</button>
         </form>
       </dialog>
     </div>
@@ -96,6 +98,13 @@ export default {
     updateMovie: function (movie) {
       axios.patch("http://localhost:3000/movies/" + movie.id, movie).then((response) => {
         console.log("Success", response.data);
+      });
+    },
+    deleteMovie: function (movie) {
+      axios.delete("http://localhost:3000/movies/" + movie.id, movie).then((response) => {
+        console.log("DELETED!", response.data);
+        var index = this.movies.indexOf(movie);
+        this.movies.splice(index, 1);
       });
     },
   },
