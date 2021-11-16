@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import MoviesIndex from "../views/MoviesIndex.vue";
-import MoviesNew from "../views/MoviesNew.vue";
 
 Vue.use(VueRouter);
 
@@ -20,8 +18,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
-  { path: "/movies", name: "MoviesIndex", component: MoviesIndex },
-  { path: "/movies/new", name: "MoviesNew", component: MoviesNew },
 ];
 
 const router = new VueRouter({

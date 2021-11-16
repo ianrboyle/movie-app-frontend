@@ -10,10 +10,21 @@
       </div>
       <dialog id="movie-details">
         <form method="dialog">
-          <p>Title: {{ currentMovie.title }}</p>
-          <p>Year: {{ currentMovie.year }}</p>
-          <p>Plot: {{ currentMovie.plot }}</p>
+          <div>
+            <label>Title:</label>
+            <input type="text" v-model="currentMovie.title" />
+          </div>
+          <div>
+            <label>Plot:</label>
+            <input type="text" v-model="currentMovie.plot" />
+          </div>
+          <div>
+            <label>Year:</label>
+            <input type="text" v-model="currentMovie.year" />
+          </div>
           <button>Close</button>
+          |
+          <button v-on:click="updateMovie(currentMovie)">Update</button>
         </form>
       </dialog>
     </div>
@@ -81,6 +92,11 @@ export default {
     showMovie: function (movie) {
       this.currentMovie = movie;
       document.querySelector("#movie-details").showModal();
+    },
+    updateMovie: function (movie) {
+      axios.patch("http://localhost:3000/movies/" + movie.id, movie).then((response) => {
+        console.log("Success", response.data);
+      });
     },
   },
 };
