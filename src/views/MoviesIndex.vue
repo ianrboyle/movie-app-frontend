@@ -3,6 +3,7 @@
     <h1>{{ message }}</h1>
     <div v-for="movie in movies" :key="movie.id">
       <h3>{{ movie.title }}</h3>
+      <router-link v-bind:to="`/movies/${movie.id}`">Movie Info</router-link>
     </div>
   </div>
 </template>

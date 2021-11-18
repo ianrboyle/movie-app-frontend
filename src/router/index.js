@@ -2,6 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import MoviesIndex from "../views/MoviesIndex.vue";
+import MoviesNew from "../views/MoviesNew.vue";
+import MoviesShow from "../views/MoviesShow.vue";
+import MoviesEdit from "../views/MoviesEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +23,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   { path: "/movies", name: "MoviesIndex", component: MoviesIndex },
+  { path: "/movies/new", name: "MoviesNew", component: MoviesNew },
+  { path: "/movies/:id", name: "MoviesShow", component: MoviesShow },
+  { path: "/movies/:id/edit", name: "MoviesEdit", component: MoviesEdit },
 ];
 
 const router = new VueRouter({
