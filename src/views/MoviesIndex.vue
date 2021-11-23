@@ -1,6 +1,13 @@
 <template>
   <div class="movies-index">
     <h1>{{ message }}</h1>
+    Search by title:
+    <input v-model="titleFilter" />
+    Search by name:
+    <input v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
+    </datalist>
     <div>
       <button>Sort Alphabetically</button>
     </div>
@@ -20,6 +27,7 @@ export default {
     return {
       message: "Welcome to the movies index page.",
       movies: [],
+      titleFilter: "",
     };
   },
   created: function () {
